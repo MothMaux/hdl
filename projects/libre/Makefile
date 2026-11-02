@@ -6,8 +6,6 @@
 
 PROJECT_NAME := libre
 
-tclargs := cs8
-
 M_DEPS += ../common/xilinx/adi_fir_filter_constr.xdc
 M_DEPS += ../common/xilinx/adi_fir_filter_bd.tcl
 M_DEPS += ../../library/util_cdc/sync_bits.v

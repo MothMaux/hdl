@@ -81,6 +81,9 @@ please checkout
 [this page](https://analogdevicesinc.github.io/hdl/user_guide/build_hdl.html#environment),
 to see how you can install this tool.
 
+Requires Vivado 2025.1
+Install to /tools/Xilinx
+
 To build a project, checkout the
 [latest release](https://github.com/analogdevicesinc/hdl/releases), after that
 just **cd** to the project that you want to build and run make:

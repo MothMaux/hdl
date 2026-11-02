@@ -22,6 +22,14 @@ create_bd_port -dir I -from 63 -to 0 gpio_i
 create_bd_port -dir O -from 63 -to 0 gpio_o
 create_bd_port -dir O -from 63 -to 0 gpio_t
 
+
+
+
+
+
+
+
+
 # PS7.tcl from F5OEO/maia-sdr/refactor/hdl/projects/board/nano/ps7.tcl
 
 ad_ip_instance processing_system7 sys_ps7
@@ -98,6 +106,10 @@ ad_ip_parameter sys_concat_intc CONFIG.NUM_PORTS 16
 ad_ip_instance proc_sys_reset sys_rstgen
 ad_ip_parameter sys_rstgen CONFIG.C_EXT_RST_WIDTH 1
 
+
+
+
+
 # Clock/Reset Interconnects
 ad_connect  sys_cpu_clk sys_ps7/FCLK_CLK0
 ad_connect  sys_200m_clk sys_ps7/FCLK_CLK1
@@ -148,7 +160,7 @@ ad_connect  sys_concat_intc/In1 GND
 ad_connect  sys_concat_intc/In0 GND
 
 
-# CMOS settings
+# ad9361
 create_bd_port -dir I rx_clk_in
 create_bd_port -dir I rx_frame_in
 create_bd_port -dir I -from 11 -to 0 rx_data_in
@@ -165,7 +177,6 @@ create_bd_port -dir I up_txnrx
 
 ad_ip_instance axi_ad9361 axi_ad9361
 ad_ip_parameter axi_ad9361 CONFIG.ID 0
-
 ad_ip_parameter axi_ad9361 CONFIG.CMOS_OR_LVDS_N 1
 ad_ip_parameter axi_ad9361 CONFIG.MODE_1R1T 0
 ad_ip_parameter axi_ad9361 CONFIG.ADC_INIT_DELAY 21
@@ -174,7 +185,6 @@ ad_ip_parameter axi_ad9361 CONFIG.TDD_DISABLE 1
 ad_ip_parameter axi_ad9361 CONFIG.DAC_DDS_DISABLE 1
 
 
-#clock dividers for CMOS
 ad_ip_instance xlconcat util_ad9361_divclk_sel_concat
 ad_ip_parameter util_ad9361_divclk_sel_concat CONFIG.NUM_PORTS 2
 ad_connect axi_ad9361/adc_r1_mode util_ad9361_divclk_sel_concat/In0
